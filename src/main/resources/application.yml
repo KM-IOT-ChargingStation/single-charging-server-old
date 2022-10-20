@@ -1,0 +1,46 @@
+
+spring:
+  profiles:
+    active: test
+  jackson:
+    serialization:
+      indent-output: true
+
+device:
+  loginFunctionCode: 49153
+
+kingmeter:
+  requestBusiness: false
+  default:
+    MinSoc : 10
+    companyCode: 4701
+    timezone: 8
+  tokenKey : a
+  tokenValue : b
+
+socket:
+  charset: utf-8
+  start_code_1: 0x40
+  start_code_2: 0x3A
+  end_code_1: 0x0D
+  end_code_2: 0x0A
+  token_length: 32
+  # readIdleTimeLimit
+  readIdleTimeLimit: 200
+  writeIdleTimeLimit: 0
+  allIdleTimeLimit: 0
+  #other config
+  waitSeconds: 20
+
+  bossThreads: 1
+  workerThreads: 8
+  useLinuxNativeEpoll: false
+  tcpNoDelay: true
+  tcpSendBufferSize: -1
+  tcpReceiveBufferSize: -1
+  tcpKeepAlive: true
+  soLinger: -1
+  reuseAddress: false
+  acceptBackLog: 1024
+
+
