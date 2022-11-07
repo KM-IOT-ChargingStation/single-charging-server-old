@@ -101,17 +101,4 @@
         </plugins>
     </build>
 
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>kingmeter-nexus</id>-->
-<!--            <name>release</name>-->
-<!--            <url>http://47.92.38.164:5007/repository/maven-public/</url>-->
-<!--        </repository>-->
-<!--        <snapshotRepository>-->
-<!--            <id>snapshots</id>-->
-<!--            <name>snapshots</name>-->
-<!--            <url>http://47.92.38.164:5007/repository/maven-snapshots/</url>-->
-<!--        </snapshotRepository>-->
-<!--    </distributionManagement>-->
-
 </project>

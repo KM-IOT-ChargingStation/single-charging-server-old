@@ -13,12 +13,6 @@ kingmeter:
   business:
     baseUrl : http://127.0.0.1:10013
 
-log:
-  message: false # wifimaster(2001) <==message==> socket server(2002)
-  model: false # wifimaster <== model ==> socket server
-  business: true # wifimaster <== business logic ==> socket server
-  exception: true # all kinds of exception
-  http: false
 
 socket:
   port: 10023
