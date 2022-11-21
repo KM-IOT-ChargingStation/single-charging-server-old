@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.kingmeter</groupId>
     <artifactId>single-charging-server-old</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>single-charging-server-old</name>
     <description>Demo project for Spring Boot</description>
 

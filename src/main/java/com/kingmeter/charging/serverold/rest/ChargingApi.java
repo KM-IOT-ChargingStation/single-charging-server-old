@@ -2,12 +2,10 @@ package com.kingmeter.charging.serverold.rest;
 
 import com.alibaba.fastjson.JSON;
 import com.kingmeter.chargingold.socket.rest.ChargingSocketApplication;
+import com.kingmeter.dto.charging.v1.rest.request.ConfigureSiteInfoRequestRestDto;
 import com.kingmeter.dto.charging.v1.rest.request.ForceUnlockRequestRestDto;
 import com.kingmeter.dto.charging.v1.rest.request.ScanUnlockRequestRestDto;
-import com.kingmeter.dto.charging.v1.rest.response.ForceUnLockResponseRestDto;
-import com.kingmeter.dto.charging.v1.rest.response.QueryDockInfoResponseRestDto;
-import com.kingmeter.dto.charging.v1.rest.response.QueryDockLockStatusResponseRestDto;
-import com.kingmeter.dto.charging.v1.rest.response.ScanUnlockResponseRestDto;
+import com.kingmeter.dto.charging.v1.rest.response.*;
 import com.kingmeter.socket.framework.application.SocketApplication;
 import com.kingmeter.socket.framework.util.CacheUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +42,7 @@ public class ChargingApi {
     @PutMapping("/forceUnLock")
     public ForceUnLockResponseRestDto forceUnLock(@RequestBody ForceUnlockRequestRestDto requestDto) {
         return chargingSocketApplication.foreUnlock(requestDto.getSiteId(),
-                requestDto.getDockId());
+                requestDto.getDockId(),requestDto.getUserId());
     }
 
     /**
@@ -58,5 +56,19 @@ public class ChargingApi {
         return chargingSocketApplication.queryDockLockStatus(siteId, dockId, userId);
     }
 
+    @GetMapping("/querySiteInfo")
+    public QuerySiteInfoResponseRestDto querySiteInfo(@RequestParam long siteId){
+        return chargingSocketApplication.querySiteInfo(siteId);
+    }
 
+    //configureSiteInfo
+    @PutMapping("/configureSiteInfo")
+    public ConfigureSiteInfoResponseRestDto configureSiteInfo(@RequestBody ConfigureSiteInfoRequestRestDto restDto){
+        return chargingSocketApplication.configureSiteInfo(restDto);
+    }
+
+    @PutMapping("/restartSite")
+    public RestartSiteResponseRestDto restartSite(@RequestParam long siteId){
+        return chargingSocketApplication.restartSite(siteId);
+    }
 }

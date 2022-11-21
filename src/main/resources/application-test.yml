@@ -18,3 +18,17 @@ socket:
   port: 10023
 
 
+current:
+  env: -1 # 0代表prod，1代表local ,-1 代表不使用这个交换wifi的功能
+
+prod:
+  wifi_name: km_local
+  wifi_pwd: km_local
+  ip: 192.168.1.101
+  port: 10033
+
+local:
+  wifi_name: KINGMETER
+  wifi_pwd: kingmeter
+  ip: 192.168.1.245
+  port: 10033
