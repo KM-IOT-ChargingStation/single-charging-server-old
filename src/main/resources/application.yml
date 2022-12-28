@@ -18,6 +18,33 @@ kingmeter:
   tokenKey : a
   tokenValue : b
 
+
+current:
+  env: -1 # 0代表prod，1代表local ,-1 代表不使用这个交换wifi的功能
+
+#prod:
+#  wifi_name: KINGMETER
+#  wifi_pwd: kingmeter
+#  ip: charging.kmiot.group
+#  port: 10033
+#local:
+#  wifi_name: km_local
+#  wifi_pwd: km_local
+#  ip: 192.168.1.100
+#  port: 10033
+
+prod:
+  wifi_name: KINGMETER
+  wifi_pwd: kingmeter
+  ip: 192.168.1.245
+  port: 10033
+
+local:
+  wifi_name: KINGMETER
+  wifi_pwd: kingmeter
+  ip: 192.168.1.245
+  port: 10033
+
 socket:
   charset: utf-8
   start_code_1: 0x40
@@ -26,7 +53,7 @@ socket:
   end_code_2: 0x0A
   token_length: 32
   # readIdleTimeLimit
-  readIdleTimeLimit: 200
+  readIdleTimeLimit: 120
   writeIdleTimeLimit: 0
   allIdleTimeLimit: 0
   #other config

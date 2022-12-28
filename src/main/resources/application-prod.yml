@@ -1,12 +1,12 @@
 server:
-  port: 10032
+  port: 10024
 
 spring:
   application:
     name: mock
 
 logging:
-  config: classpath:logback-test.xml
+  config: classpath:logback-prod.xml
 
 kingmeter:
   requestBusiness: false
@@ -15,7 +15,7 @@ kingmeter:
 
 
 socket:
-  port: 10033
+  port: 10023
 
 
 current:

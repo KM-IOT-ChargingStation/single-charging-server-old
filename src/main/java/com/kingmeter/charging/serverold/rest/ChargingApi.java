@@ -2,15 +2,15 @@ package com.kingmeter.charging.serverold.rest;
 
 import com.alibaba.fastjson.JSON;
 import com.kingmeter.chargingold.socket.rest.ChargingSocketApplication;
-import com.kingmeter.dto.charging.v1.rest.request.ConfigureSiteInfoRequestRestDto;
-import com.kingmeter.dto.charging.v1.rest.request.ForceUnlockRequestRestDto;
-import com.kingmeter.dto.charging.v1.rest.request.ScanUnlockRequestRestDto;
+import com.kingmeter.dto.charging.v1.rest.request.*;
 import com.kingmeter.dto.charging.v1.rest.response.*;
+import com.kingmeter.dto.charging.v1.socket.in.*;
 import com.kingmeter.socket.framework.application.SocketApplication;
 import com.kingmeter.socket.framework.util.CacheUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Map;
 
 
@@ -28,21 +28,29 @@ public class ChargingApi {
         return chargingSocketApplication.scanUnlock(requestDto);
     }
 
-    @GetMapping("/queryFirmwareVersion")
+    @GetMapping("/queryDockInfo")
     public QueryDockInfoResponseRestDto sendQueryAllDockInfoCommand(
             @RequestParam long siteId,
             @RequestParam long dockId,
-            @RequestParam String  userId) {
-        return chargingSocketApplication.dealWithQueryDockInfo(siteId, dockId,userId);
+            @RequestParam String userId) {
+        return chargingSocketApplication.dealWithQueryDockInfo(siteId, dockId, userId);
     }
 
-
+    @GetMapping("/queryDockInfo2")
+    public String sendQueryAllDockInfoCommand2(
+            @RequestParam long siteId,
+            @RequestParam long dockId,
+            @RequestParam String userId,
+            @RequestParam int times) {
+        chargingSocketApplication.dealWithQueryDockInfo2times(siteId, dockId, userId, times);
+        return "ok";
+    }
 
     //2,强制开锁
     @PutMapping("/forceUnLock")
     public ForceUnLockResponseRestDto forceUnLock(@RequestBody ForceUnlockRequestRestDto requestDto) {
         return chargingSocketApplication.foreUnlock(requestDto.getSiteId(),
-                requestDto.getDockId(),requestDto.getUserId());
+                requestDto.getDockId(), requestDto.getUserId());
     }
 
     /**
@@ -57,18 +65,55 @@ public class ChargingApi {
     }
 
     @GetMapping("/querySiteInfo")
-    public QuerySiteInfoResponseRestDto querySiteInfo(@RequestParam long siteId){
+    public QuerySiteInfoRequestDto querySiteInfo(@RequestParam long siteId) {
         return chargingSocketApplication.querySiteInfo(siteId);
     }
 
     //configureSiteInfo
     @PutMapping("/configureSiteInfo")
-    public ConfigureSiteInfoResponseRestDto configureSiteInfo(@RequestBody ConfigureSiteInfoRequestRestDto restDto){
+    public ConfigureSiteInfoRequestDto configureSiteInfo(@RequestBody ConfigureSiteInfoRequestRestDto restDto) {
         return chargingSocketApplication.configureSiteInfo(restDto);
     }
 
+
+    //configureSiteInfo
+    @PutMapping("/configureSiteInfo2times")
+    public String configureSiteInfo2times(@RequestBody ConfigureSiteInfoRequestRestDto restDto) {
+        chargingSocketApplication.configureSiteInfo2times(restDto);
+        return "ok";
+    }
+
     @PutMapping("/restartSite")
-    public RestartSiteResponseRestDto restartSite(@RequestParam long siteId){
+    public RestartSiteResponseRestDto restartSite(@RequestParam long siteId) {
         return chargingSocketApplication.restartSite(siteId);
     }
+
+    @GetMapping("/queryVersionOfComponents")
+    public QueryVersionOfComponentsRequestDto queryVersionOfComponents(
+            @RequestParam long siteId, @RequestParam int update_dev) {
+        QueryVersionOfComponentsRequestRestDto restDto =
+                new QueryVersionOfComponentsRequestRestDto(siteId, update_dev);
+        return chargingSocketApplication.queryVersionOfComponents(restDto);
+    }
+
+    @PutMapping("/exchangeBootLoad")
+    public ExchangeBootLoadResponseRestDto exchangeBootLoad(ExchangeBootLoadRequestRestDto restDto) {
+        return chargingSocketApplication.exchangeBootLoad(restDto);
+    }
+
+    @GetMapping("/queryLog")
+    public QueryLogRequestRestDto queryLog(long siteId){
+        return chargingSocketApplication.queryLog(siteId);
+    }
+
+    @PutMapping("/openOrCloseLog")
+    public OpenOrCloseLogRequestDto openOrCloseLog(long siteId, int flag){
+        return chargingSocketApplication.openOrCloseLog(siteId,flag);
+    }
+
+    @DeleteMapping("/clearLog")
+    public ClearLogRequestDto clearLog(long siteId){
+        return chargingSocketApplication.clearLog(siteId);
+    }
+
 }
