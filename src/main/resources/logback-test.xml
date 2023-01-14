@@ -34,18 +34,18 @@
 <!--            <charset>UTF-8</charset>-->
 <!--        </encoder>-->
 <!--    </appender>-->
-<!--    <appender name="LOGSTASH"-->
-<!--              class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
-<!--        <destination>127.0.0.1:5005</destination>-->
-<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
-<!--            <level>INFO</level>-->
-<!--        </filter>-->
-<!--        &lt;!&ndash; encoder必须配置,有多种可选 &ndash;&gt;-->
-<!--        <encoder charset="UTF-8"-->
-<!--                 class="net.logstash.logback.encoder.LogstashEncoder">-->
-<!--            <customFields>{"appname":"kmcharging"}</customFields>-->
-<!--        </encoder>-->
-<!--    </appender>-->
+    <appender name="LOGSTASH"
+              class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>127.0.0.1:5005</destination>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <!-- encoder必须配置,有多种可选 -->
+        <encoder charset="UTF-8"
+                 class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"kmcharging"}</customFields>
+        </encoder>
+    </appender>
 
     <appender name="ERROR-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -68,8 +68,8 @@
     </logger>
     <root>
 <!--        <appender-ref ref="FILE"/>-->
-<!--        <appender-ref ref="LOGSTASH"/>-->
+        <appender-ref ref="LOGSTASH"/>
         <appender-ref ref="ERROR-LOG"/>
-        <appender-ref ref="STDOUT"/>
+<!--        <appender-ref ref="STDOUT"/>-->
     </root>
 </configuration>

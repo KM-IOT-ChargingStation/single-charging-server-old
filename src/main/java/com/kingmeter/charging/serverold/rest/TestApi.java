@@ -31,17 +31,17 @@ public class TestApi {
     }
 
 
-    @DeleteMapping("/checkDockLock/{siteId}")
-    public void stopCheckDockLock(@PathVariable("siteId") long siteId) {
-        chargingSocketTestApplication.stopCheckDockLock(siteId);
-    }
-
-
-    @GetMapping("/batchCheckDockLock/{siteId}")
-    public String batchCheckDockLock(@PathVariable(name = "siteId") long siteId,
-                              @RequestParam(name = "times") int times,
-                              @RequestParam(name = "perSite") long perSite,
-                              @RequestParam(name = "perDock") long perDock) {
-        return chargingSocketTestApplication.batchCheckDockLock(siteId,times,perSite,perDock);
-    }
+//    @DeleteMapping("/checkDockLock/{siteId}")
+//    public void stopCheckDockLock(@PathVariable("siteId") long siteId) {
+//        chargingSocketTestApplication.stopCheckDockLock(siteId);
+//    }
+//
+//
+//    @GetMapping("/batchCheckDockLock/{siteId}")
+//    public String batchCheckDockLock(@PathVariable(name = "siteId") long siteId,
+//                              @RequestParam(name = "times") int times,
+//                              @RequestParam(name = "perSite") long perSite,
+//                              @RequestParam(name = "perDock") long perDock) {
+//        return chargingSocketTestApplication.batchCheckDockLock(siteId,times,perSite,perDock);
+//    }
 }

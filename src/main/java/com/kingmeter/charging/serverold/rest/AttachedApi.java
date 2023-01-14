@@ -52,8 +52,7 @@ public class AttachedApi {
         siteMap.put("cum",String.valueOf(siteMapDto.getCum()));
         siteMap.put("tim",String.valueOf(siteMapDto.getTim()));
         siteMap.put("minbsoc",String.valueOf(siteMapDto.getMinbsoc()));
-        deviceMap.put(siteId,siteMap);
-        CacheUtil.getInstance().setDeviceInfoMap(deviceMap);
+        CacheUtil.getInstance().getDeviceInfoMap().put(siteId,siteMap);
         return "okay";
     }
 
@@ -64,8 +63,7 @@ public class AttachedApi {
         ConcurrentHashMap<Long,Map<String, String>> deviceMap = CacheUtil.getInstance().getDeviceInfoMap();
         Map<String, String> siteMap = deviceMap.get(siteId);
         siteMap.put("tempTime",String.valueOf(tempTime));
-        deviceMap.put(siteId,siteMap);
-        CacheUtil.getInstance().setDeviceInfoMap(deviceMap);
+        CacheUtil.getInstance().getDeviceInfoMap().put(siteId,siteMap);
         return "okay";
     }
 
@@ -82,8 +80,7 @@ public class AttachedApi {
         long tempTime =  (timezone-hour)*3600 - (min+1)*60;
 
         siteMap.put("tempTime",String.valueOf(tempTime));
-        deviceMap.put(siteId,siteMap);
-        CacheUtil.getInstance().setDeviceInfoMap(deviceMap);
+        CacheUtil.getInstance().getDeviceInfoMap().put(siteId,siteMap);
         return "okay";
     }
 

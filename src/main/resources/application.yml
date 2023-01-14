@@ -57,7 +57,7 @@ socket:
   writeIdleTimeLimit: 0
   allIdleTimeLimit: 0
   #other config
-  waitSeconds: 20
+  waitSeconds: 30
 
   bossThreads: 1
   workerThreads: 8
