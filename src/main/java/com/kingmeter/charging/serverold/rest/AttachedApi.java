@@ -77,7 +77,7 @@ public class AttachedApi {
         GregorianCalendar calendar = new GregorianCalendar();
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
-        long tempTime =  (timezone-hour)*3600 - (min+1)*60;
+        long tempTime =  (long)(timezone-hour)*3600 - (min+1)*60;
 
         siteMap.put("tempTime",String.valueOf(tempTime));
         CacheUtil.getInstance().getDeviceInfoMap().put(siteId,siteMap);

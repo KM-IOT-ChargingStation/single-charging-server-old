@@ -1,17 +1,12 @@
 package com.kingmeter.charging.serverold.rest;
 
-import com.alibaba.fastjson.JSON;
 import com.kingmeter.chargingold.socket.rest.ChargingSocketApplication;
 import com.kingmeter.dto.charging.v1.rest.request.*;
 import com.kingmeter.dto.charging.v1.rest.response.*;
 import com.kingmeter.dto.charging.v1.socket.in.*;
-import com.kingmeter.socket.framework.application.SocketApplication;
-import com.kingmeter.socket.framework.util.CacheUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 
 @RequestMapping("/site")
@@ -26,6 +21,16 @@ public class ChargingApi {
     @PutMapping(value = "/unLock")
     public ScanUnlockResponseRestDto scanUnLock(@RequestBody ScanUnlockRequestRestDto requestDto) {
         return chargingSocketApplication.scanUnlock(requestDto);
+    }
+
+    @PutMapping(value = "/unLockII")
+    public ScanUnlockIIResponseRestDto scanUnLockII(@RequestBody ScanUnlockIIRequestRestDto requestDto) {
+        return chargingSocketApplication.scanUnlockII(requestDto);
+    }
+
+    @PutMapping(value = "/remoteLock")
+    public RemoteLockResponseRestDto remoteLock(@RequestBody RemoteLockRequestRestDto requestDto) {
+        return chargingSocketApplication.remoteLock(requestDto);
     }
 
     @GetMapping("/queryDockInfo")

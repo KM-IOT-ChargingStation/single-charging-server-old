@@ -129,6 +129,16 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
+    public void dealWithScanUnLockII(ScanUnLockIIRequestDto scanUnLockIIRequestDto) {
+
+    }
+
+    @Override
+    public void dealWithRemoteLock(RemoteLockRequestDto remoteLockRequestDto) {
+
+    }
+
+    @Override
     public SwingCardUnLockResponseDto dealWithSwingCardUnlock(SwingCardUnLockRequestDto requestDto) {
         return null;
     }
