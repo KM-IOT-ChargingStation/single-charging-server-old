@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RequestMapping("/site")
 @Slf4j
@@ -66,6 +69,7 @@ public class ChargingApi {
             @RequestParam long siteId,
             @RequestParam long dockId,
             @RequestParam String userId) {
+
         return chargingSocketApplication.queryDockLockStatus(siteId, dockId, userId);
     }
 
